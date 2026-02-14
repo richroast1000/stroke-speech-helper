@@ -1,0 +1,6 @@
+django
+openai
+python-dotenv
+langchain
+langchain-community
+langchain-openai

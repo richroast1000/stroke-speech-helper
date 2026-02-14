@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stroke Speech Assistant</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Speech Assistant</h1>
+            <p>Speak naturally. I'll help you find the next word.</p>
+        </header>
+
+        <div class="main-display">
+            <div id="history-container" class="history-container">
+                <!-- Completed sentences will be moved here -->
+            </div>
+
+            <div id="sentence-container" class="sentence-container">
+                <!-- Words will be injected here -->
+                <div class="placeholder-text" id="placeholder">Start speaking...</div>
+            </div>
+
+            <div id="prediction-container" class="prediction-container">
+                <h3>Suggested Next Token:</h3>
+                <div id="predictions" class="predictions-list">
+                    <!-- Prediction pills go here -->
+                </div>
+                <div class="prediction-controls">
+                    <button id="more-predictions" class="btn btn-secondary btn-small hidden"
+                        title="Show more suggestions">
+                        More Suggestions ↻
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="toggle-recording" class="btn btn-primary">
+                <span class="icon">Microphone</span> Start Listening
+            </button>
+            <button id="clear-conversation" class="btn btn-secondary">
+                Clear Conversation
+            </button>
+            <button id="add-full-stop" class="btn btn-secondary" title="Add Full Stop">
+                .
+            </button>
+        </div>
+
+        <div id="status-text" class="status-text">Ready</div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="edit-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Edit Word</h3>
+            <input type="text" id="edit-input" class="text-input">
+            <div class="modal-actions">
+                <button id="cancel-edit" class="btn btn-secondary">Cancel</button>
+                <button id="save-edit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/settings.js' %}"></script>
+    <script src="{% static 'js/speech.js' %}"></script>
+</body>
+
+</html>
