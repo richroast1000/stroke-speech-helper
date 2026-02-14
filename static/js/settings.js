@@ -12,7 +12,7 @@ window.APP_SETTINGS = {
     VOLUME_THRESHOLD: 50,
 
     // Minimum words required in a sentence before attempting prediction
-    MIN_WORDS_FOR_PREDICTION: 3,
+    MIN_WORDS_FOR_PREDICTION: 1,
 
     // Confidence threshold (0.0 - 1.0). Transcriptions below this are treated as partial/unsure.
     CONFIDENCE_THRESHOLD: 0.4

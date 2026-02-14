@@ -18,14 +18,15 @@ def get_llm():
     """
     Returns a configured ChatOpenAI instance based on settings.
     """
-    if settings.USE_LOCAL_LLM:
+    if settings.USE_LOCAL_SLM_FOR_NEXT_WORD:
         # Local Ollama (OpenAI compatible)
         return ChatOpenAI(
             base_url=settings.OLLAMA_API_BASE,
             api_key="ollama",  # Dummy key
             model=settings.MISTRAL_MODEL_NAME,
             temperature=0.3,
-            max_tokens=256 # Limit output
+
+            # max_tokens=256 # Removed to avoid 422 error with local Ollama/Mistral
         )
     else:
         # Mistral API via OpenAI SDK compatibility (or direct OpenAI if configured for that)
@@ -34,8 +35,8 @@ def get_llm():
             base_url="https://api.mistral.ai/v1",
             api_key=settings.MISTRAL_API_KEY,
             model="ministral-3b-latest",
-            temperature=0.3,
-            max_tokens=256
+            temperature=0.3
+            # max_tokens=256
         )
 
 # Initialize parser
